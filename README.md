@@ -1,5 +1,5 @@
 # Parse multiple files and upload to SQL database
-### Supplementary file splitting script at bottom of readme
+### <em>Supplementary folder/file splitting script at bottom of readme...</em>
 
 Here is a lightweight python program which you can customise for your own keyword search in text files held within a directory.
 
@@ -71,11 +71,13 @@ Sample content in 'resubmit.txt'
 python3 parse.py
 ```
 
-### Supplementary file split script
+### Supplementary folder/file split script
 
 The .sh file called split.sh is so you can split a folder containing large amounts of files into smaller subfolders.
 
-Open the file and set your requirements i.e Source Directory, Destination Direction, Number of files per subfolder
+Open the file and set your requirements i.e Source Directory, Destination Directory, Number of files per subfolder
+
+Note: If destination directory has subfolders with name as Destination Prefix in script, the script will fail
 
 - Open terminal in the directory containing split.sh
 
