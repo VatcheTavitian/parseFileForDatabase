@@ -6,33 +6,33 @@ Here is a lightweight python program which you can customise for your own keywor
 <em>I have processed 100,000+ files with this program to insert 6,500,000+ rows into a database with no issues.
 I recommend if you are expecting to insert a huge amount of lines, that you upload to sql server/database on your machine (localhost), then carry out a database dump which you can restore to your desired server. This is only because it may be much quicker. Otherwise it will just take a long time depending on your connection and server transaction capacity.</em>
 
-### Note the comments in the parse.py file. You must change according to your requirements.
+### Note the comments in the parse.py file. You must change according to your requirements and credentials!
 
-You set the DIRECTORY in parse.py to location where all the text files are located which you want to process.
-This program opens each file and looks for a particular keyword (keyword1) at the beginning of each line.
-It then takes the content following the word on the line and stores it as a value. 
+Set the DIRECTORY in parse.py to location where all the text files are located which you want to process.
+Set your column names and keywords accordingly. Column name should match what the columns are called in your table.
+e.g column1="Keyword1"
+The program opens each file in the DIRECTORY and looks for the first keyword (e.g keyword1) you have assinged.
+at the beginning of each line. When the keyword is found, it takes the content following the word on the line and stores it as a value. 
 It then checks the following line.
-If keyword2 is presence on next line, it will store the content following the keyword.
-If the second keyword (keyword2) is NOT on the following line, an empty value is
-stored. Same with keyword3.
-You can choose to have as many or as few keywords as you like. The script comes with setup for 3 keywords.
-
-After a file is processed, it is moved to a destination directory
+If keyword2 is present on next line, it will store the content following the keyword.
+If the second keyword (keyword2) is NOT on the following line, an empty value is stored. Same with keyword3. 
+You can choose to have as many or as few keywords as you like. The script comes setup for 3 columns/keywords.
+After a file is processed, it is moved to DESTINATION directory.
 
 Take a look at SampleFile2.txt in the provided test folder as an example. 
 
 ![Screenshot](screenshots/files.png)
 
-The program will look for keyword1, keyword2 and keyword3.
+The program will look for "keyword1", "keyword2" and "keyword3".
 
 ![Screenshot](screenshots/sampletextfile.png)
 
 It will then attempt to insert into a new row in the database you nominate in the parse.py file.
 
-REMEMBER TO ADJUST THE NUMBER OF KEYWORDS AS WELL AS DECLARE THEM WITH THE CORRECT COLUMN NAMES AS THE TABLE IN WHICH YOU WILL INSERT
+REMEMBER TO ADJUST THE NUMBER OF KEYWORDS AS WELL AS DECLARE THEM WITH THE CORRECT COLUMN NAMES AS THE TABLE IN WHICH YOU WILL INSERT  
 e.g 
 change Keyword1 = "Keyword1"
-to     Keyword1 = "username"
+to     uname = "USERNAME"
 
 On successful execution the table will be populated with all the rows in all the files which have the keyword1 satisfied at the 
 beginning of the sentence. 

@@ -38,12 +38,12 @@ except OperationalError:
 	print(f"{Colors.RD}Connection failedn{Colors.RST}")
 	exit()
 
-# Change left side to column name in database table
-# Change right side to word/phrase you are looking for in files you are parsing
-# eg uname = "USERNAME:"
-keyword1 = "keyword1"
-keyword2 = "keyword2"
-keyword3 = "keyword3"
+# Change left side to column name in your database table
+# Change right side to the word/phrase you are looking for in files you are parsing
+# For example uname = "USERNAME:"
+column1 = "keyword1"
+column2 = "keyword2"
+column3 = "keyword3"
 
 # If you need more or less keywords for your parsing, simply add or remove
 # Also add/remove the corresponding value in below code!
@@ -70,9 +70,8 @@ for eachfile in FILES:
 				line = file.readline()
 				if (len(line) > 0 and line[:len(keyword3)] == keyword3):
 					value3 = line[len(keyword3) + 1:].strip()
-
 				try:
-					sql = f"INSERT INTO {TABLE_NAME} ({keyword1}, {keyword2}, {keyword3}) values ('{value1}' , '{value2}', '{value3}')"
+					sql = f"INSERT INTO {TABLE_NAME} ({column1}, {column2}, {column3}) values ('{value1}' , '{value2}', '{value3}')"
 					cursor.execute(sql)
 				except Exception as e:
 					error_log.write("FILE: " + eachfile + f" Failed to add {keyword1}:" + value1 + 
