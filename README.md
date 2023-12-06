@@ -8,11 +8,13 @@ I recommend if you are expecting to insert a huge amount of lines, that you uplo
 
 ### Note the comments in the parse.py file. You must change according to your requirements.
 
-You set the DIRECTORY in parse.py to where all the text files are located which you want to process.
+You set the DIRECTORY in parse.py to location where all the text files are located which you want to process.
 This program opens each file and looks for a particular keyword (keyword1) at the beginning of each line.
 It then takes the content following the word on the line and stores it as a value. 
+It then checks the following line.
+If keyword2 is presence on next line, it will store the content following the keyword.
 If the second keyword (keyword2) is NOT on the following line, an empty value is
-stored. Same with keyword3. 
+stored. Same with keyword3.
 You can choose to have as many or as few keywords as you like. The script comes with setup for 3 keywords.
 
 After a file is processed, it is moved to a destination directory
@@ -21,13 +23,16 @@ Take a look at SampleFile2.txt in the provided test folder as an example.
 
 ![Screenshot](screenshots/files.png)
 
-The program will look for keyword1, keyword2 and keyword 3.
+The program will look for keyword1, keyword2 and keyword3.
 
 ![Screenshot](screenshots/sampletextfile.png)
 
 It will then attempt to insert into a new row in the database you nominate in the parse.py file.
 
-REMEMBER TO ADJUST THE NUMBER OF KEYWORDS AS WELL AS DECLARE THEM WITH THE CORRECT COLUMN NAMES AS THE TABLE
+REMEMBER TO ADJUST THE NUMBER OF KEYWORDS AS WELL AS DECLARE THEM WITH THE CORRECT COLUMN NAMES AS THE TABLE IN WHICH YOU WILL INSERT
+e.g 
+change Keyword1 = "Keyword1"
+to     Keyword1 = "username"
 
 On successful execution the table will be populated with all the rows in all the files which have the keyword1 satisfied at the 
 beginning of the sentence. 
