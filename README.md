@@ -4,7 +4,7 @@
 Here is a lightweight python program which you can customise for your own keyword search in text files held within a directory.
 
 <em>I have processed 100,000+ files with this program to insert 6,500,000+ rows into a database with no issues.
-I recommend if you are expecting to insert a huge amount of lines, that you upload to sql server/database on your machine (localhost), then carry out a database dump which you can restore to your desired server. This is only because it may be much quicker. Otherwise it will just take a long time depending on your connection and server transaction capacity.</em>
+I recommend if you are expecting to insert a huge amount of lines, that you upload to sql server/database on your machine (localhost), then carry out a database dump which you can restore to your desired server. This is only because it may be much quicker. Otherwise it will just take a long time depending on your connection and server transaction capacity...</em>
 
 ### Note the comments in the parse.py file. You must change according to your requirements and credentials!
 
