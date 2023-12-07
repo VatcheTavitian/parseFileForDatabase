@@ -26,6 +26,7 @@ credentials = {'user' : "enterusername",
 			   'port' : "enterportnumber",
 			   'dbname' : "enterdatabasename"}
 
+
 try:
 	cnx = connect(**credentials)
 	cnx.autocommit=True
@@ -55,32 +56,33 @@ for eachfile in FILES:
 		print("Uploading file to database [" + eachfile + "]")
 		line = file.readline()
 		while (line):
-			while (len(line) > 0 and line[:len(keyword1)] != keyword1):
+			while (len(line) > 0 and line[:len(column1)] != column1):
 				line = file.readline()
-			if (len(line) > 0 and line[:len(keyword1)] == keyword1):
+			if (len(line) > 0 and line[:len(column1)] == column1):
 				# Number of values should match number of keywords you are looking for
 				value1 = "" 
 				value2 = ""
 				value3 = ""
 				
-				value1 = line[len(keyword1) + 1:].strip()
+				value1 = line[len(column1) + 1:].strip()
 				line = file.readline()
-				if (len(line) > 0 and line[:len(keyword2)] == keyword2):
-					value2 = line[len(keyword2) + 1:].strip()
+				if (len(line) > 0 and line[:len(column2)] == column2):
+					value2 = line[len(column2) + 1:].strip()
 				line = file.readline()
-				if (len(line) > 0 and line[:len(keyword3)] == keyword3):
-					value3 = line[len(keyword3) + 1:].strip()
+				if (len(line) > 0 and line[:len(column3)] == column3):
+					value3 = line[len(column3) + 1:].strip()
 				try:
+					# Remember to change column names on lines 45-47 to your actual column names in your table
 					sql = f"INSERT INTO {TABLE_NAME} ({column1}, {column2}, {column3}) values ('{value1}' , '{value2}', '{value3}')"
 					cursor.execute(sql)
 				except Exception as e:
-					error_log.write("FILE: " + eachfile + f" Failed to add {keyword1}:" + value1 + 
-						f" | {keyword2}: " + value2 + f" | {keyword3}: " + value3 
+					error_log.write("FILE: " + eachfile + f" Failed to add {column1}:" + value1 + 
+						f" | {column2}: " + value2 + f" | {column3}: " + value3 
 						+ "\nError: " + str(e) + '\n-----\n')
 					
-					resubmit.write( f"{keyword1}: " + value1 +'\n' + \
-									f"{keyword2}: " + value2 +'\n' + \
-									f"{keyword3}: " + value3 +'\n\n')
+					resubmit.write( f"{column1}: " + value1 +'\n' + \
+									f"{column2}: " + value2 +'\n' + \
+									f"{column3}: " + value3 +'\n\n')
 			else:
 				line = file.readline()
 
